@@ -8,7 +8,7 @@ import com.example.noteapp.ui.theme.RedOrange
 import com.example.noteapp.ui.theme.RedPink
 import com.example.noteapp.ui.theme.Violet
 
-@Entity
+@Entity(tableName = "note")
 data class Note(
     val title: String,
     val content: String,
@@ -16,8 +16,7 @@ data class Note(
     val color: Int,
     @PrimaryKey val id: Int? = null
 ){
-    companion object{
+    companion object {
         val noteColors = listOf(RedOrange, LightGreen, Violet, BabyBlue, RedPink)
     }
 }
-
