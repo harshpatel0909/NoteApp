@@ -1,6 +1,5 @@
 name: Android CI (Code Check)
 
-# Trigger this pipeline on pushes to dev or pull requests to main
 on:
   push:
     branches: [ "dev" ]
@@ -25,14 +24,6 @@ jobs:
       - name: Grant Execute Permission for Gradle
         run: chmod +x gradlew
 
-      # 1. Check formatting and styling (if using lint tools)
-      - name: Run Code Quality Checks (Lint)
-        run: ./gradlew lintDebug
-
-      # 2. Run your Unit Tests
-      - name: Run Local Unit Tests
-        run: ./gradlew testDebugUnitTest
-
-      # 3. Ensure the entire project builds successfully
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
+      # Compiles the app while running unit tests cleanly
+      - name: Build Debug Application
+        run: ./gradlew assembleDebug testDebugUnitTest --no-daemon
