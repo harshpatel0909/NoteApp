@@ -24,6 +24,8 @@ jobs:
       - name: Grant Execute Permission for Gradle
         run: chmod +x gradlew
 
-      # Compiles the app while running unit tests cleanly
+      # Injects the hidden API key directly into the build environment
       - name: Build Debug Application
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: ./gradlew assembleDebug testDebugUnitTest --no-daemon
