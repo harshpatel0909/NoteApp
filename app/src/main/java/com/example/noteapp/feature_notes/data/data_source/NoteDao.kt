@@ -10,11 +10,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
-    /*automatically refresh when a note is added or deleted*/
     @Query("SELECT * FROM note")
     fun getNotes(): Flow<List<Note>>
 
-    /*find a specific note*/
     @Query("SELECT * FROM note WHERE id = :id")
     suspend fun getNoteById(id: Int): Note?
 
