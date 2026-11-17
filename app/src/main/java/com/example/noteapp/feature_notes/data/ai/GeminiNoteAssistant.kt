@@ -14,13 +14,14 @@ import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import javax.inject.Inject
+import com.example.noteapp.BuildConfig
 
 class GeminiNoteAssistant @Inject constructor() : AiNoteAssistant {
 
     private val model by lazy {
         GenerativeModel(
-            modelName = "gemini-1.5-flash",
-            apiKey = "AQ.Ab8RN6JsEgX6cjznl3mRadwfBam0Q3G9Gnbc0Q0BmRugD_qc4w",
+            modelName = "Gemini-1.5-flash",
+            apiKey = BuildConfig.GEMINI_API_KEY,
             generationConfig = generationConfig { temperature = 0.4f }
         )
     }
